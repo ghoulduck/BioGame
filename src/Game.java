@@ -1,9 +1,11 @@
 import java.util.Scanner;
 
 public class Game {
-    boolean fullscreen;
+    static boolean fullscreen;
+    private Chloroplast chloroplast;
+    private Inter inter;
 
-    public static void main(String[] args) {
+    /* public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Start Game? ");
         if (scanner.nextLine().equalsIgnoreCase("yes")) {
@@ -25,14 +27,29 @@ public class Game {
                 return;
             }
         }
-    }
+    } */
 
     public Game() {
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("Fullscreen? ");
         fullscreen = scanner.nextLine().equalsIgnoreCase("yes");
 
         Chloroplast chloroplast = new Chloroplast();
-        Interface inter = new Interface();
+        Inter inter = new Inter();
+    }
+
+    public static boolean getFullscreen() {
+        return fullscreen;
+    }
+
+    public void update() {
+        for (int i = 0; i < chloroplast.getProducers().size(); i++) {
+            Producer current =  chloroplast.getProducers().get(i);
+
+            switch (current.getType()) {
+                case 1:
+            }
+        }
     }
 }
