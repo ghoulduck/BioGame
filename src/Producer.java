@@ -38,13 +38,13 @@ public abstract class Producer {
         upgradeLevel++;
         switch (upgradeLevel) {
             case 2:
-                processTime = 2000;
+                processTime = (int) (2000 * Game.getMultiplier());
                 break;
             case 3:
-                processTime = 1000;
+                processTime = (int) (1000 * Game.getMultiplier());
                 break;
             default:
-                processTime = 5000;
+                processTime = (int) (5000 * Game.getMultiplier());
                 break;
         }
     }

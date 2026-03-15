@@ -71,4 +71,8 @@ public class Chloroplast {
     public void setWater(int water) {
         this.water = water;
     }
+
+    public void addToProducers(Producer p) {
+        producers.add(p);
+    }
 }
