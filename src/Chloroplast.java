@@ -4,6 +4,7 @@ public class Chloroplast {
     private int hydrogen;
     private int sun;
     private int co2;
+    private int water;
     private ProducerListEnhanced producers;
 
     public Chloroplast() {
@@ -12,6 +13,7 @@ public class Chloroplast {
         this.hydrogen = 0;
         this.sun = 0;
         this.co2 = 0;
+        this.water = 0;
     }
 
     public int getGlucose() {
@@ -54,10 +56,19 @@ public class Chloroplast {
         this.co2 = co2;
     }
 
-    public void updateValues() {
-        for (int i = 0; i < producers.size(); i++) {
-            Producer producer = producers.get(i);
+    public ProducerListEnhanced getProducers() {
+        return producers;
+    }
 
-        }
+    public void setProducers(ProducerListEnhanced producers) {
+        this.producers = producers;
+    }
+
+    public int getWater() {
+        return water;
+    }
+
+    public void setWater(int water) {
+        this.water = water;
     }
 }

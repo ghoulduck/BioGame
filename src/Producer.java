@@ -2,6 +2,7 @@ public abstract class Producer {
     private int rate;
     private int upgradeLevel;
     private int seconds;
+    private int type;
 
     public Producer(int rate, int upgradeLevel) {
         this.upgradeLevel = upgradeLevel;
@@ -24,6 +25,10 @@ public abstract class Producer {
 
     public void increaseUpgradeLevel() {
         upgradeLevel++;
+    }
+
+    public int getType() {
+        return type;
     }
 
 }
