@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Game {
     static boolean fullscreen;
-    private Chloroplast chloroplast;
-    private Inter inter;
+    private static Chloroplast chloroplast;
+    private static Inter inter;
 
     /* public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -51,5 +51,13 @@ public class Game {
                 case 1:
             }
         }
+    }
+
+    public static Chloroplast getChloroplast() {
+        return chloroplast;
+    }
+
+    public static Inter getInter() {
+        return inter;
     }
 }

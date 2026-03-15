@@ -47,7 +47,7 @@ public class ProducerList {
         // checks if there is already an empty spot
         for (int i = 0; i < stroma.length; i++) {
             if (stroma[i] == null) {
-                stroma[i] = new Stroma(rate, level);
+                stroma[i] = new Stroma(rate, level, false);
                 return;
             }
         }
@@ -56,7 +56,7 @@ public class ProducerList {
         Producer[] temp = new Stroma[stroma.length + 1];
         for (int i = 0; i < temp.length; i++) {
             if (i == temp.length - 1) {
-                temp[i] = new Stroma(rate, level);
+                temp[i] = new Stroma(rate, level, false);
                 break;
             }
             temp[i] = stroma[i];
