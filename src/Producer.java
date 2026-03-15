@@ -1,11 +1,13 @@
 public abstract class Producer {
     private int rate;
-    private int upgradeLevel;
+    private static int upgradeLevel;
+    abstract void setUpgradeLevel(int upgradeLevel);
+    public abstract int getUpgradeLevel();
     private int type;
     private int processTime;
     private long startTime;
     private long endTime;
-    private Chloroplast chloroplast;
+    private final Chloroplast chloroplast;
 
     public Producer(int rate, int upgradeLevel, Chloroplast chloroplast) {
         this.rate = rate;
@@ -32,14 +34,6 @@ public abstract class Producer {
         this.rate = rate;
     }
 
-    public int getUpgradeLevel() {
-        return upgradeLevel;
-    }
-
-    public void setUpgradeLevel(int upgradeLevel) {
-        this.upgradeLevel = upgradeLevel;
-    }
-
     public void increaseUpgradeLevel() {
         upgradeLevel++;
     }
@@ -56,7 +50,7 @@ public abstract class Producer {
         return System.currentTimeMillis() - startTime <= processTime;
     }
 
-    abstract int generate();
+    abstract void generate();
 
     abstract boolean canGenerate();
 

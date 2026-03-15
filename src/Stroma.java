@@ -1,5 +1,6 @@
 public class Stroma extends Reactor {
     private static int numStroma = 0;
+    protected static int upgradeLevel;
 
     public Stroma(int rate, int upgradeLevel, boolean dependent) {
         super(rate, upgradeLevel, dependent);
@@ -13,7 +14,18 @@ public class Stroma extends Reactor {
         return numStroma;
     }
 
+    // implement
+    public void react() {
 
+    }
+
+    public void setUpgradeLevel(int upgradeLevel) {
+        Stroma.upgradeLevel = upgradeLevel;
+    }
+
+    public int getUpgradeLevel() {
+        return Stroma.upgradeLevel;
+    }
 
     @Override
     public String toString() {

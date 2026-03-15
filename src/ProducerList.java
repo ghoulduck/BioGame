@@ -19,7 +19,7 @@ public class ProducerList {
         // checks if there is already an empty spot
         for (int i = 0; i < thylakoids.length; i++) {
             if (thylakoids[i] == null) {
-                thylakoids[i] = new Thylakoid(rate, level);
+                thylakoids[i] = new Thylakoid(rate, level, false);
                 return;
             }
         }
@@ -28,7 +28,7 @@ public class ProducerList {
         Producer[] temp = new Thylakoid[thylakoids.length + 1];
         for (int i = 0; i < temp.length; i++) {
             if (i == temp.length - 1) {
-                temp[i] = new Thylakoid(rate, level);
+                temp[i] = new Thylakoid(rate, level,false);
                 break;
             }
             temp[i] = thylakoids[i];

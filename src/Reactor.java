@@ -2,6 +2,7 @@ public abstract class Reactor extends Producer {
     private int product;
     private int waste;
     private boolean dependent;
+    protected static int upgradeLevel;
 
 
     public Reactor(int rate, int upgradeLevel, boolean dependent) {
@@ -15,13 +16,18 @@ public abstract class Reactor extends Producer {
         return dependent;
     }
 
-    public int generate() {
-        return 0;
+    // does nothing
+    public void generate() {
+        return;
+    }
+
+    public boolean canGenerate() {
+        return false;
     }
 
     public void setDependent(boolean dependent) {
         this.dependent = dependent;
     }
 
-    abstract public int react();
+    abstract public void react();
 }

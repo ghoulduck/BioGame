@@ -1,10 +1,10 @@
 public class Chloroplast {
-    private static int glucose;
-    private static int oxygen;
-    private static int hydrogen;
-    private static int sun;
-    private static int co2;
-    private static int water;
+    private int glucose;
+    private int oxygen;
+    private int hydrogen;
+    private int sun;
+    private int co2;
+    private int water;
     private ProducerListEnhanced producers;
 
     public Chloroplast() {
@@ -20,8 +20,8 @@ public class Chloroplast {
         return glucose;
     }
 
-    public static void setGlucose(int glucose) {
-        glucose = glucose;
+    public void setGlucose(int glucose) {
+        this.glucose = glucose;
     }
 
     public int getOxygen() {
