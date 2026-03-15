@@ -7,12 +7,12 @@ public abstract class Producer {
     private int processTime;
     private long startTime;
     private long endTime;
-    private final Chloroplast chloroplast;
+    private static Chloroplast chloroplast;
 
     public Producer(int rate, int upgradeLevel, Chloroplast chloroplast) {
         this.rate = rate;
         Producer.upgradeLevel = upgradeLevel;
-        this.chloroplast = chloroplast;
+        Producer.chloroplast = chloroplast;
 
         switch (upgradeLevel) {
             case 2:
