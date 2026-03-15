@@ -73,7 +73,7 @@ public class ProducerList {
         // checks if there is already an empty spot
         for (int i = 0; i < pigments.length; i++) {
             if (pigments[i] == null) {
-                pigments[i] = new Pigment(rate, level);
+                pigments[i] = new Pigment(rate, level, null);
                 return;
             }
         }
@@ -82,7 +82,7 @@ public class ProducerList {
         Producer[] temp = new Pigment[pigments.length + 1];
         for (int i = 0; i < temp.length; i++) {
             if (i == temp.length - 1) {
-                temp[i] = new Pigment(rate, level);
+                temp[i] = new Pigment(rate, level, null);
                 break;
             }
             temp[i] = pigments[i];
@@ -99,7 +99,7 @@ public class ProducerList {
         // checks if there is already an empty spot
         for (int i = 0; i < roots.length; i++) {
             if (roots[i] == null) {
-                roots[i] = new Root(rate, level);
+                roots[i] = new Root(rate, level, null);
                 return;
             }
         }
@@ -108,7 +108,7 @@ public class ProducerList {
         Producer[] temp = new Root[roots.length + 1];
         for (int i = 0; i < temp.length; i++) {
             if (i == temp.length - 1) {
-                temp[i] = new Root(rate, level);
+                temp[i] = new Root(rate, level, null);
                 break;
             }
             temp[i] = roots[i];
@@ -125,16 +125,16 @@ public class ProducerList {
         // checks if there is already an empty spot
         for (int i = 0; i < stomata.length; i++) {
             if (stomata[i] == null) {
-                stomata[i] = new Stomata(rate, level);
+                stomata[i] = new Root(rate, level, null);
                 return;
             }
         }
 
         // if not adds another spot
-        Producer[] temp = new Stomata[stomata.length + 1];
+        Producer[] temp = new Root[stomata.length + 1];
         for (int i = 0; i < temp.length; i++) {
             if (i == temp.length - 1) {
-                temp[i] = new Stomata(rate, level);
+                temp[i] = new Root(rate, level, null);
                 break;
             }
             temp[i] = stomata[i];

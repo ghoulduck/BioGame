@@ -11,7 +11,7 @@ public abstract class Producer {
 
     public Producer(int rate, int upgradeLevel, Chloroplast chloroplast) {
         this.rate = rate;
-        this.upgradeLevel = upgradeLevel;
+        Producer.upgradeLevel = upgradeLevel;
         this.chloroplast = chloroplast;
 
         switch (upgradeLevel) {
@@ -36,12 +36,26 @@ public abstract class Producer {
 
     public void increaseUpgradeLevel() {
         upgradeLevel++;
+        switch (upgradeLevel) {
+            case 2:
+                processTime = 2000;
+                break;
+            case 3:
+                processTime = 1000;
+                break;
+            default:
+                processTime = 5000;
+                break;
+        }
     }
 
     public int getType() {
         return type;
     }
 
+    public Chloroplast getChloroplast() {
+        return chloroplast;
+    }
     private void start() {
         startTime = System.currentTimeMillis();
     }

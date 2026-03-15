@@ -1,19 +1,33 @@
 public class Pigment extends Producer {
-    private static int numPigments = 0;
+    private static int numStomata = 0;
+    protected static int upgradeLevel;
 
-    public Pigment(int rate, int upgradeLevel) {
-        super(rate, upgradeLevel);
+    public Pigment(int rate, int upgradeLevel, Chloroplast chloroplast) {
+        super(rate, upgradeLevel, chloroplast);
         this.setUpgradeLevel(upgradeLevel);
         this.setRate(rate);
-        numPigments++;
+        numStomata++;
     }
 
-    public void doReaction(Chloroplast chloroplast) {
+    public static int getNumThylakoids() {
+        return numStomata;
+    }
+
+    public void setUpgradeLevel(int upgradeLevel) {
+        Pigment.upgradeLevel = upgradeLevel;
+    }
+
+    public int getUpgradeLevel() {
+        return Pigment.upgradeLevel;
+    }
+
+    // implement
+    public void generate() {
 
     }
 
-    public static int getNumPigments() {
-        return numPigments;
+    public boolean canGenerate() {
+        return true;
     }
 
     @Override

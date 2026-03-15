@@ -2,8 +2,8 @@ public class Stomata extends Producer {
     private static int numStomata = 0;
     protected static int upgradeLevel;
 
-    public Stomata(int rate, int upgradeLevel) {
-        super(rate, upgradeLevel);
+    public Stomata(int rate, int upgradeLevel, Chloroplast chloroplast) {
+        super(rate, upgradeLevel, chloroplast);
         this.setUpgradeLevel(upgradeLevel);
         this.setRate(rate);
         numStomata++;
@@ -14,16 +14,20 @@ public class Stomata extends Producer {
     }
 
     public void setUpgradeLevel(int upgradeLevel) {
-        Stomata.upgradeLevel = upgradeLevel;
+        Root.upgradeLevel = upgradeLevel;
     }
 
     public int getUpgradeLevel() {
-        return Stomata.upgradeLevel;
+        return Root.upgradeLevel;
     }
 
     // implement
     public void generate() {
 
+    }
+
+    public boolean canGenerate() {
+        return true;
     }
 
     @Override
