@@ -13,7 +13,8 @@ public class Chloroplast {
         hydrogen = 0;
         sun = 0;
         co2 = 0;
-        this.water = 0;
+        water = 0;
+        producers = new ProducerListEnhanced();
     }
 
     public int getGlucose() {
