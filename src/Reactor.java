@@ -3,6 +3,7 @@ public abstract class Reactor extends Producer {
     private int waste;
     private boolean dependent;
     protected static int upgradeLevel;
+    private Chloroplast chloroplast;
 
 
     public Reactor(int rate, int upgradeLevel, boolean dependent) {
@@ -10,6 +11,7 @@ public abstract class Reactor extends Producer {
         this.setRate(rate);
         this.setUpgradeLevel(upgradeLevel);
         this.dependent = dependent;
+        this.chloroplast = Producer.getChloroplast();
     }
 
     public boolean isDependent() {
@@ -17,17 +19,13 @@ public abstract class Reactor extends Producer {
     }
 
     // does nothing
-    public void generate() {
-        return;
-    }
+    public abstract void generate();
 
-    public boolean canGenerate() {
-        return false;
-    }
+    public abstract boolean canGenerate();
 
     public void setDependent(boolean dependent) {
         this.dependent = dependent;
     }
 
-    abstract public void react();
+    abstract void react();
 }

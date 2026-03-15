@@ -8,6 +8,7 @@ public abstract class Producer {
     private long startTime;
     private long endTime;
     private static Chloroplast chloroplast;
+    private boolean generating;
 
     public Producer(int rate, int upgradeLevel, Chloroplast chloroplast) {
         this.rate = rate;
@@ -53,14 +54,24 @@ public abstract class Producer {
         return type;
     }
 
-    public Chloroplast getChloroplast() {
+    public static Chloroplast getChloroplast() {
         return chloroplast;
     }
-    private void start() {
-        startTime = System.currentTimeMillis();
+
+    public boolean isGenerating() {
+        return generating;
     }
 
-    private boolean end() {
+    public void setGenerating(boolean generating) {
+        this.generating = generating;
+    }
+
+    public void start() {
+        startTime = System.currentTimeMillis();
+        generating = true;
+    }
+
+    public boolean isFinished() {
         return System.currentTimeMillis() - startTime <= processTime;
     }
 

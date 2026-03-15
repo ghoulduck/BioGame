@@ -23,7 +23,6 @@ public class Game {
         multiplier = difficulty.getMultiplier();
         rate = difficulty.getRate();
 
-
         Chloroplast chloroplast = new Chloroplast();
         Inter inter = new Inter();
 
@@ -36,6 +35,12 @@ public class Game {
 
     public static boolean getFullscreen() {
         return fullscreen;
+    }
+
+    public static void gameLoop() {
+        while (true) {
+
+        }
     }
 
 

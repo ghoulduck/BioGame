@@ -23,11 +23,21 @@ public class Root extends Producer {
 
     // implement
     public void generate() {
+        this.start();
 
+        while (true) {
+            if (isFinished()) {
+                setGenerating(false);
+                break;
+            }
+        }
+
+        Chloroplast chloroplast = Stomata.getChloroplast();
+        chloroplast.setWater(chloroplast.getWater() + getRate());
     }
 
     public boolean canGenerate() {
-        return true;
+        return !isGenerating();
     }
 
     @Override

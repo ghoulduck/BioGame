@@ -9,25 +9,35 @@ public class Stomata extends Producer {
         numStomata++;
     }
 
-    public static int getNumThylakoids() {
+    public static int getNumStomata() {
         return numStomata;
     }
 
     public void setUpgradeLevel(int upgradeLevel) {
-        Root.upgradeLevel = upgradeLevel;
+        Stomata.upgradeLevel = upgradeLevel;
     }
 
     public int getUpgradeLevel() {
-        return Root.upgradeLevel;
+        return Stomata.upgradeLevel;
     }
 
-    // implement
-    public void generate() {
 
+    public void generate() {
+        this.start();
+
+        while (true) {
+            if (isFinished()) {
+                setGenerating(false);
+                break;
+            }
+        }
+
+        Chloroplast chloroplast = Stomata.getChloroplast();
+        chloroplast.setCo2(chloroplast.getCo2() + getRate());
     }
 
     public boolean canGenerate() {
-        return true;
+        return !isGenerating();
     }
 
     @Override
