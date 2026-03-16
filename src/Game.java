@@ -40,7 +40,7 @@ public class Game {
     }
 
     public void gameLoop() {
-        int targetFPS = 2;
+        int targetFPS = 4;
         long frameTime = 1000 / targetFPS;
 
         while (true) {
@@ -63,10 +63,10 @@ public class Game {
     }
 
     public void updateConsole() {
+        System.out.flush();
         System.out.print("\033[2J\033[H");
 
         System.out.println("BioFactory");
-        System.out.println("═════════════════════════════════════════");
         System.out.println();
 
         System.out.println("Output Resources:");
