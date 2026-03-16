@@ -98,29 +98,27 @@ public class Chloroplast {
         return "Glucose: " + glucose + "\nOxygen: " + oxygen + "\nHydrogen: " + hydrogen + "\nSun: " + sun + "\nCo2: " + co2 + "\nWater: " + water + "\nNum Pigments: " + Pigment.getNumPigments() + "\nNum Roots: " + Root.getNumRoots() + "\nNum Stomata: " + Stomata.getNumStomata() + "\nNum Stroma: " + Stroma.getNumStroma() + "\nNum Thylakoids: " + Thylakoid.getNumThylakoids() + "\n";
     }
 
-    public boolean buy(String p) {
+    public void buy(String p) {
         if (glucose > 6) {
             switch (p.toLowerCase()) {
                 case "thylakoid":
                     this.addToProducers(new Thylakoid(Game.getRate(), Thylakoid.upgradeLevel, true));
-                    return true;
+                    return;
                 case "stroma":
                     this.addToProducers(new Stroma(Game.getRate(), Stroma.upgradeLevel, false));
-                    return true;
+                    return;
                 case "pigment":
                     this.addToProducers(new Pigment(Game.getRate(), Pigment.upgradeLevel, this));
-                    return true;
+                    return;
                 case "stomata":
                     this.addToProducers(new Stomata(Game.getRate(), Stomata.upgradeLevel, this));
-                    return true;
+                    return;
                 case "root":
                     this.addToProducers(new Root(Game.getRate(), Stomata.upgradeLevel, this));
-                    return true;
+                    return;
                 default:
-                    return false;
             }
         } else {
-            return false;
         }
     }
 }

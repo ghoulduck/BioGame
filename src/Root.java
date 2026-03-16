@@ -21,23 +21,21 @@ public class Root extends Producer {
         return Root.upgradeLevel;
     }
 
-    // implement
     public void generate() {
-        // this.start();
-
-        while (true) {
-            if (isFinished()) {
-                setGenerating(false);
-                break;
-            }
-        }
-
-        Chloroplast chloroplast = Stomata.getChloroplast();
-        chloroplast.setWater(chloroplast.getWater() + getRate());
+        start();
     }
 
     public boolean canGenerate() {
-        return isGenerating();
+        if (isGenerating()) {
+            if (isFinished()) {
+                Chloroplast chloroplast = Producer.getChloroplast();
+                chloroplast.setWater(chloroplast.getWater() + getRate());
+                setGenerating(false);
+                return false;
+            }
+            return false;
+        }
+        return true;
     }
 
     @Override

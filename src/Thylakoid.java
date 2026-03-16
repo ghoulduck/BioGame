@@ -21,28 +21,21 @@ public class Thylakoid extends Reactor {
     }
 
     public void react() {
-        // Consume resources
         chloroplast.setSun(chloroplast.getSun() - 12);
         chloroplast.setWater(chloroplast.getWater() - 6);
-        // Start the timer
         start();
-        // DON'T BLOCK - return and let canGenerate() check when done
     }
 
     public boolean canGenerate() {
         if (isGenerating()) {
-            // Currently generating - check if we're done
             if (isFinished()) {
-                // Time elapsed, produce the output
                 chloroplast.setHydrogen(chloroplast.getHydrogen() + 12);
                 chloroplast.setOxygen(chloroplast.getOxygen() + 6);
                 setGenerating(false);
-                return false;  // Can't generate again yet
+                return false;
             }
-            // Still generating
             return false;
         }
-        // Not generating - check if we have resources to start
         return chloroplast.getSun() >= 12 && chloroplast.getWater() >= 6;
     }
 

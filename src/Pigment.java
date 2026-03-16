@@ -21,23 +21,21 @@ public class Pigment extends Producer {
         return Pigment.upgradeLevel;
     }
 
-    // implement
     public void generate() {
-        // this.start();
-
-        while (true) {
-            if (isFinished()) {
-                setGenerating(false);
-                break;
-            }
-        }
-
-        Chloroplast chloroplast = Stomata.getChloroplast();
-        chloroplast.setSun(chloroplast.getSun() + getRate());
+        start();
     }
 
     public boolean canGenerate() {
-        return isGenerating();
+        if (isGenerating()) {
+            if (isFinished()) {
+                Chloroplast chloroplast = Producer.getChloroplast();
+                chloroplast.setSun(chloroplast.getSun() + getRate());
+                setGenerating(false);
+                return false;
+            }
+            return false;
+        }
+        return true;
     }
 
     @Override

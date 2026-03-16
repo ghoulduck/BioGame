@@ -6,6 +6,7 @@ public class Inter {
     private GraphicsEnvironment ge;
     private GraphicsDevice gd;
     private GraphicsConfiguration gc;
+    private Chloroplast chloroplast;
 
 
 
@@ -14,6 +15,7 @@ public class Inter {
         GraphicsDevice gd = ge.getDefaultScreenDevice();
         GraphicsConfiguration gc = gd.getDefaultConfiguration();
 
+        chloroplast = Producer.getChloroplast();
 
         gameFrame = new JFrame("BioFactory", gc);
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,15 +25,16 @@ public class Inter {
         } else {
             gameFrame.setSize(960, 720);
         }
-        gameFrame.setResizable(false);
 
-        gameFrame.setAlwaysOnTop(false);
-        gameFrame.setVisible(true);
-
-        JTextArea upgrade = new JTextArea("Upgrades");
+//        JTextArea upgrade = new JTextArea("Upgrades");
+//        upgrade.setEditable(false);
+//        upgrade.setLineWrap(true);
+//        upgrade.setBounds(240, 0, 50, 25);
         JButton buyThylakoid = new JButton("1 Thylakoid");
         buyThylakoid.addActionListener(e -> {
+            chloroplast.buy("thylakoid");
         });
+        // buyThylakoid.setBounds();
         JButton buyStroma = new JButton("1 Stroma");
         buyStroma.addActionListener(e -> {
         });
@@ -44,6 +47,18 @@ public class Inter {
         JButton buyRoot = new JButton("1 Root");
         buyRoot.addActionListener(e -> {
         });
+
+        // gameFrame.add(upgrade, BorderLayout.NORTH);
+        gameFrame.add(buyThylakoid, BorderLayout.SOUTH);
+        gameFrame.add(buyStroma, BorderLayout.EAST);
+        gameFrame.add(buyPigment, BorderLayout.WEST);
+        gameFrame.add(buyStomata, BorderLayout.CENTER);
+        // gameFrame.add(buyRoot, BorderLayout.SOUTH);
+
+        gameFrame.setResizable(false);
+
+        gameFrame.setAlwaysOnTop(false);
+        gameFrame.setVisible(true);
 
     }
 

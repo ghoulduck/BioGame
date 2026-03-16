@@ -21,23 +21,21 @@ public class Stomata extends Producer {
         return Stomata.upgradeLevel;
     }
 
-
     public void generate() {
-        // this.start();
-
-        while (true) {
-            if (isFinished()) {
-                setGenerating(false);
-                break;
-            }
-        }
-
-        Chloroplast chloroplast = Stomata.getChloroplast();
-        chloroplast.setCo2(chloroplast.getCo2() + getRate());
+        start();
     }
 
     public boolean canGenerate() {
-        return isGenerating();
+        if (isGenerating()) {
+            if (isFinished()) {
+                Chloroplast chloroplast = Producer.getChloroplast();
+                chloroplast.setCo2(chloroplast.getCo2() + getRate());
+                setGenerating(false);
+                return false;
+            }
+            return false;
+        }
+        return true;
     }
 
     @Override
