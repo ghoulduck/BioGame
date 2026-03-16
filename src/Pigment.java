@@ -9,7 +9,7 @@ public class Pigment extends Producer {
         numStomata++;
     }
 
-    public static int getNumThylakoids() {
+    public static int getNumPigments() {
         return numStomata;
     }
 

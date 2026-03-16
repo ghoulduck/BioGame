@@ -3,11 +3,11 @@ public abstract class Reactor extends Producer {
     private int waste;
     private boolean dependent;
     protected static int upgradeLevel;
-    private Chloroplast chloroplast;
+    private final Chloroplast chloroplast;
 
 
     public Reactor(int rate, int upgradeLevel, boolean dependent) {
-        super(rate, upgradeLevel, Game.getChloroplast());
+        super(rate, upgradeLevel, Producer.getChloroplast());
         this.setRate(rate);
         this.setUpgradeLevel(upgradeLevel);
         this.dependent = dependent;

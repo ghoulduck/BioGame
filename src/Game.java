@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Game {
     static boolean fullscreen;
     private Difficulty difficulty = null;
-    private static Chloroplast chloroplast;
+    private Chloroplast chloroplast;
     private static Inter inter;
     private static double multiplier;
     private static int rate;
@@ -23,39 +23,76 @@ public class Game {
         multiplier = difficulty.getMultiplier();
         rate = difficulty.getRate();
 
-        Chloroplast chloroplast = new Chloroplast();
-        Inter inter = new Inter();
+        chloroplast = new Chloroplast();
+        inter = new Inter();
 
         chloroplast.addToProducers(new Pigment(rate, 1, chloroplast));
         chloroplast.addToProducers(new Root(rate, 1, chloroplast));
         chloroplast.addToProducers(new Stomata(rate, 1, chloroplast));
         chloroplast.addToProducers(new Stroma(rate, 1, false));
         chloroplast.addToProducers(new Thylakoid(rate, 1, true));
+
+        initConsole();
+        gameLoop();
     }
 
     public static boolean getFullscreen() {
         return fullscreen;
     }
 
-    public static void gameLoop() {
+    public void gameLoop() {
+        initConsole();
+
         while (true) {
-
-        }
-    }
-
-
-    // unfinished
-    public void update() {
-        for (int i = 0; i < chloroplast.getProducers().size(); i++) {
-            Producer current =  chloroplast.getProducers().get(i);
-
-            switch (current.getType()) {
-                case 1:
+            update();
+            updateConsole();
+            chloroplast.iterateProducers();
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
 
-    public static Chloroplast getChloroplast() {
+    public void updateConsole() {
+        System.out.print("\033[H"); // move cursor to top
+
+        System.out.println("BioFactory");
+        System.out.println("-----------------");
+
+        System.out.println("Glucose: " + chloroplast.getGlucose());
+        System.out.println("Oxygen: " + chloroplast.getOxygen());
+        System.out.println("Hydrogen: " + chloroplast.getHydrogen());
+
+        System.out.println();
+
+        System.out.println("Sun: " + chloroplast.getSun());
+        System.out.println("CO2: " + chloroplast.getCo2());
+        System.out.println("Water: " + chloroplast.getWater());
+
+        System.out.println();
+
+        System.out.println("Producers");
+        System.out.println("Pigments: " + Pigment.getNumPigments());
+        System.out.println("Roots: " + Root.getNumRoots());
+        System.out.println("Stomata: " + Stomata.getNumStomata());
+        System.out.println("Stroma: " + Stroma.getNumStroma());
+        System.out.println("Thylakoids: " + Thylakoid.getNumThylakoids());
+    }
+
+    public void initConsole() {
+        for (int i = 0; i < 15; i++) {
+            System.out.println();
+        }
+    }
+
+    // unfinished
+    public void update() {
+        chloroplast.iterateProducers();
+    }
+
+    public Chloroplast getChloroplast() {
         return chloroplast;
     }
 

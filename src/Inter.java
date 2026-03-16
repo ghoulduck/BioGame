@@ -2,7 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Inter {
-    private JFrame gameFrame;
+    private static JFrame gameFrame;
     private GraphicsEnvironment ge;
     private GraphicsDevice gd;
     private GraphicsConfiguration gc;
@@ -37,5 +37,9 @@ public class Inter {
         gameFrame.setAlwaysOnTop(false);
         gameFrame.setVisible(true);
 
+    }
+
+    public static JFrame getFrame() {
+        return gameFrame;
     }
 }

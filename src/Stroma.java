@@ -38,7 +38,7 @@ public class Stroma extends Reactor {
     }
 
     public boolean canGenerate() {
-        return !isGenerating() && chloroplast.getCo2() >= 6 && chloroplast.getHydrogen() >= 12;
+        return !isGenerating() && Producer.getChloroplast().getCo2() >= 6 && Producer.getChloroplast().getHydrogen() >= 12;
     }
 
     public void setUpgradeLevel(int upgradeLevel) {

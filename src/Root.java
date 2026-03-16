@@ -9,7 +9,7 @@ public class Root extends Producer {
         numStomata++;
     }
 
-    public static int getNumThylakoids() {
+    public static int getNumRoots() {
         return numStomata;
     }
 

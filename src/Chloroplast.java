@@ -76,4 +76,17 @@ public class Chloroplast {
     public void addToProducers(Producer p) {
         producers.add(p);
     }
+
+    public void iterateProducers() {
+        for (int i = 0; i < producers.size(); i++) {
+            Producer p = producers.get(i);
+            if (p.canGenerate()) {
+                p.generate();
+            }
+        }
+    }
+
+    public String toString() {
+        return "Glucose: " + glucose + "\nOxygen: " + oxygen + "\nHydrogen: " + hydrogen + "\nSun: " + sun + "\nCo2: " + co2 + "\nWater: " + water + "\nNum Pigments: " + Pigment.getNumPigments() + "\nNum Roots: " + Root.getNumRoots() + "\nNum Stomata: " + Stomata.getNumStomata() + "\nNum Stroma: " + Stroma.getNumStroma() + "\nNum Thylakoids: " + Thylakoid.getNumThylakoids() + "\n";
+    }
 }
