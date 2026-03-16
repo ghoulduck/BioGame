@@ -3,14 +3,11 @@ import javax.swing.*;
 
 public class Inter {
     private static JFrame gameFrame;
-    private Chloroplast chloroplast;
 
     public Inter() {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice gd = ge.getDefaultScreenDevice();
         GraphicsConfiguration gc = gd.getDefaultConfiguration();
-
-        chloroplast = Producer.getChloroplast();
 
         gameFrame = new JFrame("BioFactory", gc);
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,31 +20,31 @@ public class Inter {
 
         JButton buyThylakoid = new JButton("Thylakoid");
         buyThylakoid.addActionListener(e -> {
-            chloroplast.buy("thylakoid");
+            Producer.getChloroplast().buy("thylakoid");
         });
         buyThylakoid.setFont(new Font("Arial", Font.PLAIN, 20));
 
         JButton buyStroma = new JButton("Stroma");
         buyStroma.addActionListener(e -> {
-            chloroplast.buy("stroma");
+            Producer.getChloroplast().buy("stroma");
         });
         buyStroma.setFont(new Font("Arial", Font.PLAIN, 20));
 
         JButton buyPigment = new JButton("Pigment");
         buyPigment.addActionListener(e -> {
-            chloroplast.buy("pigment");
+            Producer.getChloroplast().buy("pigment");
         });
         buyPigment.setFont(new Font("Arial", Font.PLAIN, 20));
 
         JButton buyStomata = new JButton("Stomata");
         buyStomata.addActionListener(e -> {
-            chloroplast.buy("stomata");
+            Producer.getChloroplast().buy("stomata");
         });
         buyStomata.setFont(new Font("Arial", Font.PLAIN, 20));
 
         JButton buyRoot = new JButton("Root");
         buyRoot.addActionListener(e -> {
-            chloroplast.buy("root");
+            Producer.getChloroplast().buy("root");
         });
         buyRoot.setFont(new Font("Arial", Font.PLAIN, 20));
 
