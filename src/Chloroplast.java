@@ -103,22 +103,25 @@ public class Chloroplast {
             switch (p.toLowerCase()) {
                 case "thylakoid":
                     this.addToProducers(new Thylakoid(Game.getRate(), Thylakoid.upgradeLevel, true));
+                    glucose -= 6;
                     return;
                 case "stroma":
                     this.addToProducers(new Stroma(Game.getRate(), Stroma.upgradeLevel, false));
+                    glucose -= 6;
                     return;
                 case "pigment":
                     this.addToProducers(new Pigment(Game.getRate(), Pigment.upgradeLevel, this));
+                    glucose -= 6;
                     return;
                 case "stomata":
                     this.addToProducers(new Stomata(Game.getRate(), Stomata.upgradeLevel, this));
+                    glucose -= 6;
                     return;
                 case "root":
                     this.addToProducers(new Root(Game.getRate(), Stomata.upgradeLevel, this));
+                    glucose -= 6;
                     return;
-                default:
             }
-        } else {
         }
     }
 }

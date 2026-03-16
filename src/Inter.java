@@ -3,12 +3,7 @@ import javax.swing.*;
 
 public class Inter {
     private static JFrame gameFrame;
-    private GraphicsEnvironment ge;
-    private GraphicsDevice gd;
-    private GraphicsConfiguration gc;
     private Chloroplast chloroplast;
-
-
 
     public Inter() {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -26,40 +21,55 @@ public class Inter {
             gameFrame.setSize(960, 720);
         }
 
-//        JTextArea upgrade = new JTextArea("Upgrades");
-//        upgrade.setEditable(false);
-//        upgrade.setLineWrap(true);
-//        upgrade.setBounds(240, 0, 50, 25);
-        JButton buyThylakoid = new JButton("1 Thylakoid");
+        JButton buyThylakoid = new JButton("Thylakoid");
         buyThylakoid.addActionListener(e -> {
             chloroplast.buy("thylakoid");
         });
-        // buyThylakoid.setBounds();
-        JButton buyStroma = new JButton("1 Stroma");
-        buyStroma.addActionListener(e -> {
-        });
-        JButton buyPigment = new JButton("1 Pigment");
-        buyPigment.addActionListener(e -> {
-        });
-        JButton buyStomata = new JButton("1 Stomata");
-        buyStomata.addActionListener(e -> {
-        });
-        JButton buyRoot = new JButton("1 Root");
-        buyRoot.addActionListener(e -> {
-        });
+        buyThylakoid.setFont(new Font("Arial", Font.PLAIN, 20));
 
-        // gameFrame.add(upgrade, BorderLayout.NORTH);
-        gameFrame.add(buyThylakoid, BorderLayout.SOUTH);
-        gameFrame.add(buyStroma, BorderLayout.EAST);
-        gameFrame.add(buyPigment, BorderLayout.WEST);
-        gameFrame.add(buyStomata, BorderLayout.CENTER);
-        // gameFrame.add(buyRoot, BorderLayout.SOUTH);
+        JButton buyStroma = new JButton("Stroma");
+        buyStroma.addActionListener(e -> {
+            chloroplast.buy("stroma");
+        });
+        buyStroma.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        JButton buyPigment = new JButton("Pigment");
+        buyPigment.addActionListener(e -> {
+            chloroplast.buy("pigment");
+        });
+        buyPigment.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        JButton buyStomata = new JButton("Stomata");
+        buyStomata.addActionListener(e -> {
+            chloroplast.buy("stomata");
+        });
+        buyStomata.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        JButton buyRoot = new JButton("Root");
+        buyRoot.addActionListener(e -> {
+            chloroplast.buy("root");
+        });
+        buyRoot.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        JLabel componentLabel = new JLabel("Components");
+        componentLabel.setFont(new Font("Arial", Font.BOLD, 28));
+        componentLabel.setHorizontalAlignment(JLabel.CENTER);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(6, 1, 10, 20));
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
+        buttonPanel.add(componentLabel);
+        buttonPanel.add(buyThylakoid);
+        buttonPanel.add(buyStroma);
+        buttonPanel.add(buyPigment);
+        buttonPanel.add(buyStomata);
+        buttonPanel.add(buyRoot);
+
+        gameFrame.add(buttonPanel, BorderLayout.CENTER);
 
         gameFrame.setResizable(false);
-
         gameFrame.setAlwaysOnTop(false);
         gameFrame.setVisible(true);
-
     }
 
     public static JFrame getFrame() {
