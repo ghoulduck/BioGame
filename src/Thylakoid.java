@@ -37,7 +37,7 @@ public class Thylakoid extends Reactor {
     }
 
     public boolean canGenerate() {
-        return isGenerating() && chloroplast.getSun() >= 12 && chloroplast.getWater() >= 6;
+        return !isGenerating() && chloroplast.getSun() >= 12 && chloroplast.getWater() >= 6;
     }
 
     public void setUpgradeLevel(int upgradeLevel) {
