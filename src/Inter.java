@@ -23,19 +23,27 @@ public class Inter {
         } else {
             gameFrame.setSize(960, 720);
         }
-
-        /*Button button = new Button("test");
-        button.addActionListener(new ButtonListener());
-        button.setSize(50, 50);
-        button.setFont(new Font("Times New Roman", Font.PLAIN, 20)); */
-
-        // gameFrame.add(button);
-
-        // gameFrame.
         gameFrame.setResizable(false);
 
         gameFrame.setAlwaysOnTop(false);
         gameFrame.setVisible(true);
+
+        JTextArea upgrade = new JTextArea("Upgrades");
+        JButton buyThylakoid = new JButton("1 Thylakoid");
+        buyThylakoid.addActionListener(e -> {
+        });
+        JButton buyStroma = new JButton("1 Stroma");
+        buyStroma.addActionListener(e -> {
+        });
+        JButton buyPigment = new JButton("1 Pigment");
+        buyPigment.addActionListener(e -> {
+        });
+        JButton buyStomata = new JButton("1 Stomata");
+        buyStomata.addActionListener(e -> {
+        });
+        JButton buyRoot = new JButton("1 Root");
+        buyRoot.addActionListener(e -> {
+        });
 
     }
 

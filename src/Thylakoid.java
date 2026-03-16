@@ -21,7 +21,7 @@ public class Thylakoid extends Reactor {
     }
 
     // implement
-    protected void react() {
+    public void react() {
         chloroplast.setSun(chloroplast.getSun() - 12);
         chloroplast.setWater(chloroplast.getWater() - 6);
         while (true) {

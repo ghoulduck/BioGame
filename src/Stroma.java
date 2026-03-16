@@ -17,7 +17,7 @@ public class Stroma extends Reactor {
     }
 
     // implement
-    protected void react() {
+    public void react() {
         chloroplast.setCo2(chloroplast.getCo2() - 6);
         chloroplast.setHydrogen(chloroplast.getHydrogen() - 12);
         start();

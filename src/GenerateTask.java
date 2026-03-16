@@ -6,6 +6,10 @@ public class GenerateTask extends Thread {
     }
 
     public void run() {
-        producer.generate();
+        while (true) {
+            if (producer.canGenerate()) {
+                producer.generate();
+            }
+        }
     }
 }

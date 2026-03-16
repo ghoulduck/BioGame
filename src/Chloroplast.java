@@ -79,6 +79,7 @@ public class Chloroplast {
         GenerateTask task = new GenerateTask(p);
         producers.add(p);
         producersThread.add(task);
+        task.start();
         // producersThread.get(producersThread.size() - 1).start();
     }
 
@@ -86,13 +87,36 @@ public class Chloroplast {
         for (int i = 0; i < producers.size(); i++) {
             GenerateTask g = producersThread.get(i);
             Producer p = producers.get(i);
-            if (p.canGenerate()) {
-                g.start();
-            }
         }
     }
 
     public String toString() {
         return "Glucose: " + glucose + "\nOxygen: " + oxygen + "\nHydrogen: " + hydrogen + "\nSun: " + sun + "\nCo2: " + co2 + "\nWater: " + water + "\nNum Pigments: " + Pigment.getNumPigments() + "\nNum Roots: " + Root.getNumRoots() + "\nNum Stomata: " + Stomata.getNumStomata() + "\nNum Stroma: " + Stroma.getNumStroma() + "\nNum Thylakoids: " + Thylakoid.getNumThylakoids() + "\n";
+    }
+
+    public boolean buy(String p) {
+        if (glucose > 6) {
+            switch (p.toLowerCase()) {
+                case "thylakoid":
+                    this.addToProducers(new Thylakoid(Game.getRate(), Thylakoid.upgradeLevel, true));
+                    return true;
+                case "stroma":
+                    this.addToProducers(new Stroma(Game.getRate(), Stroma.upgradeLevel, false));
+                    return true;
+                case "pigment":
+                    this.addToProducers(new Pigment(Game.getRate(), Pigment.upgradeLevel, this));
+                    return true;
+                case "stomata":
+                    this.addToProducers(new Stomata(Game.getRate(), Stomata.upgradeLevel, this));
+                    return true;
+                case "root":
+                    this.addToProducers(new Root(Game.getRate(), Stomata.upgradeLevel, this));
+                    return true;
+                default:
+                    return false;
+            }
+        } else {
+            return false;
+        }
     }
 }

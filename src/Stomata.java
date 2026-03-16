@@ -23,7 +23,7 @@ public class Stomata extends Producer {
 
 
     public void generate() {
-        this.start();
+        // this.start();
 
         while (true) {
             if (isFinished()) {

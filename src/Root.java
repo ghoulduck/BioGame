@@ -23,7 +23,7 @@ public class Root extends Producer {
 
     // implement
     public void generate() {
-        this.start();
+        // this.start();
 
         while (true) {
             if (isFinished()) {
