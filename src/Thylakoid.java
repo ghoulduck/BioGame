@@ -1,7 +1,7 @@
 public class Thylakoid extends Reactor {
     private static int numThylakoids = 0;
     protected static int upgradeLevel;
-    private Chloroplast chloroplast;
+    private final Chloroplast chloroplast;
 
     public Thylakoid(int rate, int upgradeLevel, boolean dependent) {
         super(rate, upgradeLevel, dependent);
