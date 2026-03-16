@@ -8,7 +8,7 @@ public class Stroma extends Reactor {
         this.setUpgradeLevel(upgradeLevel);
         this.setRate(rate);
         this.setDependent(false);
-        Chloroplast chloroplast = Reactor.getChloroplast();
+        chloroplast = Producer.getChloroplast();
         numStroma++;
     }
 
@@ -38,7 +38,7 @@ public class Stroma extends Reactor {
     }
 
     public boolean canGenerate() {
-        return !isGenerating() && Producer.getChloroplast().getCo2() >= 6 && Producer.getChloroplast().getHydrogen() >= 12;
+        return isGenerating() && Producer.getChloroplast().getCo2() >= 6 && Producer.getChloroplast().getHydrogen() >= 12;
     }
 
     public void setUpgradeLevel(int upgradeLevel) {

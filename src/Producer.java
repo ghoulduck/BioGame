@@ -59,7 +59,7 @@ public abstract class Producer {
     }
 
     public boolean isGenerating() {
-        return generating;
+        return !generating;
     }
 
     public void setGenerating(boolean generating) {
@@ -72,7 +72,7 @@ public abstract class Producer {
     }
 
     public boolean isFinished() {
-        return System.currentTimeMillis() - startTime <= processTime;
+        return System.currentTimeMillis() - startTime >= processTime;
     }
 
     abstract void generate();

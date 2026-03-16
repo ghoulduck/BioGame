@@ -37,7 +37,7 @@ public class Pigment extends Producer {
     }
 
     public boolean canGenerate() {
-        return !isGenerating();
+        return isGenerating();
     }
 
     @Override

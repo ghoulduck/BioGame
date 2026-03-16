@@ -37,7 +37,7 @@ public class Stomata extends Producer {
     }
 
     public boolean canGenerate() {
-        return !isGenerating();
+        return isGenerating();
     }
 
     @Override

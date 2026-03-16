@@ -32,7 +32,6 @@ public class Game {
         chloroplast.addToProducers(new Stroma(rate, 1, false));
         chloroplast.addToProducers(new Thylakoid(rate, 1, true));
 
-        initConsole();
         gameLoop();
     }
 
@@ -41,22 +40,16 @@ public class Game {
     }
 
     public void gameLoop() {
-        initConsole();
+        // initConsole();
 
         while (true) {
             update();
             updateConsole();
-            chloroplast.iterateProducers();
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 
     public void updateConsole() {
-        System.out.print("\033[H"); // move cursor to top
+        System.out.print("\r"); // move cursor to top
 
         System.out.println("BioFactory");
         System.out.println("-----------------");
@@ -79,6 +72,7 @@ public class Game {
         System.out.println("Stomata: " + Stomata.getNumStomata());
         System.out.println("Stroma: " + Stroma.getNumStroma());
         System.out.println("Thylakoids: " + Thylakoid.getNumThylakoids());
+        System.out.println();
     }
 
     public void initConsole() {
