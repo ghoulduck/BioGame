@@ -20,24 +20,30 @@ public class Thylakoid extends Reactor {
         react();
     }
 
-    // implement
     public void react() {
+        // Consume resources
         chloroplast.setSun(chloroplast.getSun() - 12);
         chloroplast.setWater(chloroplast.getWater() - 6);
-        while (true) {
-            if (isFinished()) {
-                setGenerating(false);
-                break;
-            }
-        }
-
-        // traditionally, oxygen is vented, but for gameplay purposes I am leaving it to increment the oxygen counter
-        chloroplast.setHydrogen(chloroplast.getHydrogen() + 12);
-        chloroplast.setOxygen(chloroplast.getOxygen() + 6);
+        // Start the timer
+        start();
+        // DON'T BLOCK - return and let canGenerate() check when done
     }
 
     public boolean canGenerate() {
-        return !isGenerating() && chloroplast.getSun() >= 12 && chloroplast.getWater() >= 6;
+        if (isGenerating()) {
+            // Currently generating - check if we're done
+            if (isFinished()) {
+                // Time elapsed, produce the output
+                chloroplast.setHydrogen(chloroplast.getHydrogen() + 12);
+                chloroplast.setOxygen(chloroplast.getOxygen() + 6);
+                setGenerating(false);
+                return false;  // Can't generate again yet
+            }
+            // Still generating
+            return false;
+        }
+        // Not generating - check if we have resources to start
+        return chloroplast.getSun() >= 12 && chloroplast.getWater() >= 6;
     }
 
     public void setUpgradeLevel(int upgradeLevel) {

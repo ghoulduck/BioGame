@@ -31,6 +31,7 @@ public abstract class Producer {
     public int getRate() {
         return rate;
     }
+
     public void setRate(int rate) {
         this.rate = rate;
     }
@@ -59,7 +60,7 @@ public abstract class Producer {
     }
 
     public boolean isGenerating() {
-        return !generating;
+        return generating;  // ✅ FIXED - removed the !
     }
 
     public void setGenerating(boolean generating) {
@@ -72,11 +73,13 @@ public abstract class Producer {
     }
 
     public boolean isFinished() {
+        if (!generating) {
+            return false;  // ✅ FIXED - can't be finished if not generating
+        }
         return System.currentTimeMillis() - startTime >= processTime;
     }
 
     abstract void generate();
 
     abstract boolean canGenerate();
-
 }

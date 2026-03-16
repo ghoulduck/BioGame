@@ -16,21 +16,13 @@ public class Stroma extends Reactor {
         return numStroma;
     }
 
-    // implement
     public void react() {
+        // Consume resources
         chloroplast.setCo2(chloroplast.getCo2() - 6);
         chloroplast.setHydrogen(chloroplast.getHydrogen() - 12);
+        // Start the timer
         start();
-
-        while (true) {
-            if (isFinished()) {
-                setGenerating(false);
-                break;
-            }
-        }
-
-        chloroplast.setGlucose(chloroplast.getGlucose() + 6);
-
+        // DON'T BLOCK - return and let canGenerate() check when done
     }
 
     public void generate() {
@@ -38,7 +30,19 @@ public class Stroma extends Reactor {
     }
 
     public boolean canGenerate() {
-        return !isGenerating() && chloroplast.getCo2() >= 6 && chloroplast.getHydrogen() >= 12;
+        if (isGenerating()) {
+            // Currently generating - check if we're done
+            if (isFinished()) {
+                // Time elapsed, produce the output
+                chloroplast.setGlucose(chloroplast.getGlucose() + 6);
+                setGenerating(false);
+                return false;  // Can't generate again yet
+            }
+            // Still generating
+            return false;
+        }
+        // Not generating - check if we have resources to start
+        return chloroplast.getCo2() >= 6 && chloroplast.getHydrogen() >= 12;
     }
 
     public void setUpgradeLevel(int upgradeLevel) {
