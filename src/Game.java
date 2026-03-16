@@ -40,48 +40,56 @@ public class Game {
     }
 
     public void gameLoop() {
-        // initConsole();
+        int targetFPS = 2;
+        long frameTime = 1000 / targetFPS;
 
         while (true) {
+            long startTime = System.currentTimeMillis();
+
             update();
             updateConsole();
+
+            long elapsedTime = System.currentTimeMillis() - startTime;
+            long sleepTime = frameTime - elapsedTime;
+
+            if (sleepTime > 0) {
+                try {
+                    Thread.sleep(sleepTime);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
         }
     }
 
     public void updateConsole() {
-        System.out.print("\r"); // move cursor to top
+        System.out.print("\033[2J\033[H");
 
         System.out.println("BioFactory");
-        System.out.println("-----------------");
-
-        System.out.println("Glucose: " + chloroplast.getGlucose());
-        System.out.println("Oxygen: " + chloroplast.getOxygen());
-        System.out.println("Hydrogen: " + chloroplast.getHydrogen());
-
+        System.out.println("═════════════════════════════════════════");
         System.out.println();
 
-        System.out.println("Sun: " + chloroplast.getSun());
-        System.out.println("CO2: " + chloroplast.getCo2());
-        System.out.println("Water: " + chloroplast.getWater());
-
+        System.out.println("Output Resources:");
+        System.out.println("  Glucose:   " + String.format("%6d", chloroplast.getGlucose()));
+        System.out.println("  Oxygen:    " + String.format("%6d", chloroplast.getOxygen()));
+        System.out.println("  Hydrogen:  " + String.format("%6d", chloroplast.getHydrogen()));
         System.out.println();
 
-        System.out.println("Producers");
-        System.out.println("Pigments: " + Pigment.getNumPigments());
-        System.out.println("Roots: " + Root.getNumRoots());
-        System.out.println("Stomata: " + Stomata.getNumStomata());
-        System.out.println("Stroma: " + Stroma.getNumStroma());
-        System.out.println("Thylakoids: " + Thylakoid.getNumThylakoids());
+        System.out.println("Input Resources:");
+        System.out.println("  Sun:       " + String.format("%6d", chloroplast.getSun()));
+        System.out.println("  CO2:       " + String.format("%6d", chloroplast.getCo2()));
+        System.out.println("  Water:     " + String.format("%6d", chloroplast.getWater()));
+        System.out.println();
+
+        System.out.println("Producers:");
+        System.out.println("  Pigments:  " + String.format("%3d", Pigment.getNumPigments()));
+        System.out.println("  Roots:     " + String.format("%3d", Root.getNumRoots()));
+        System.out.println("  Stomata:   " + String.format("%3d", Stomata.getNumStomata()));
+        System.out.println("  Stroma:    " + String.format("%3d", Stroma.getNumStroma()));
+        System.out.println("  Thylakoids:" + String.format("%3d", Thylakoid.getNumThylakoids()));
         System.out.println();
     }
 
-    public void initConsole() {
-        for (int i = 0; i < 15; i++) {
-            System.out.println();
-        }
-    }
-
-    // unfinished
     public void update() {
         chloroplast.iterateProducers();
     }
@@ -105,6 +113,4 @@ public class Game {
     public static int getRate() {
         return rate;
     }
-
-
 }
