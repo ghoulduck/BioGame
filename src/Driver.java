@@ -8,6 +8,6 @@ public class Driver {
         // if your seeing this you shouldnt be snooping...
         // anyways, hope you enjoy my incredibly scuffed game
         // took a long time
-        // its my first time making something, so I hope you like it\
+        // its my first time making something, so I hope you like it!
     }
 }
